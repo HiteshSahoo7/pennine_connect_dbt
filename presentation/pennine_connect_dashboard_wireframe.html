@@ -1,0 +1,111 @@
+<h2 class="sr-only">Pennine Connect churn and retention dashboard wireframe</h2>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.5rem">
+  <div style="background:var(--surface-1);border-radius:var(--radius);padding:1rem">
+    <p style="font-size:13px;color:var(--text-secondary);margin:0 0 4px">Annualised churn rate</p>
+    <p style="font-size:24px;font-weight:500;margin:0">7.4%</p>
+    <p style="font-size:12px;color:var(--text-muted);margin:4px 0 0">12-month average</p>
+  </div>
+  <div style="background:var(--surface-1);border-radius:var(--radius);padding:1rem">
+    <p style="font-size:13px;color:var(--text-secondary);margin:0 0 4px">Active subscriptions</p>
+    <p style="font-size:24px;font-weight:500;margin:0">622</p>
+    <p style="font-size:12px;color:var(--text-muted);margin:4px 0 0">as of latest month</p>
+  </div>
+  <div style="background:var(--bg-danger);border-radius:var(--radius);padding:1rem">
+    <p style="font-size:13px;color:var(--text-danger);margin:0 0 4px">At-risk customers</p>
+    <p style="font-size:24px;font-weight:500;margin:0;color:var(--text-danger)">52</p>
+    <p style="font-size:12px;color:var(--text-danger);margin:4px 0 0">flagged by billing signal</p>
+  </div>
+</div>
+
+<div style="background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem">
+  <p style="font-size:14px;font-weight:500;margin:0 0 12px">Monthly churn trend — last 12 months</p>
+  <div style="position:relative;height:220px">
+    <canvas id="churnTrend2"></canvas>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1rem">
+  <div style="background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem">
+    <p style="font-size:14px;font-weight:500;margin:0 0 12px">Subscription lifecycle</p>
+    <div style="position:relative;height:200px">
+      <canvas id="lifecycleDonut2"></canvas>
+    </div>
+  </div>
+  <div style="background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem">
+    <p style="font-size:14px;font-weight:500;margin:0 0 12px">Leading indicator scan (risk ratio)</p>
+    <div style="position:relative;height:200px">
+      <canvas id="riskBar2"></canvas>
+    </div>
+  </div>
+</div>
+
+<div style="background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem">
+  <p style="font-size:14px;font-weight:500;margin:0 0 12px">At-risk customers — billing signal (illustrative rows)</p>
+  <table style="width:100%;font-size:13px;border-collapse:collapse">
+    <tr style="border-bottom:0.5px solid var(--border)">
+      <td style="padding:6px 0;color:var(--text-secondary)">Customer</td>
+      <td style="padding:6px 0;color:var(--text-secondary)">Region</td>
+      <td style="padding:6px 0;color:var(--text-secondary);text-align:right">MRR</td>
+      <td style="padding:6px 0;color:var(--text-secondary);text-align:right">Last unpaid invoice</td>
+    </tr>
+    <tr style="border-bottom:0.5px solid var(--border)">
+      <td style="padding:6px 0">C-00412</td><td style="padding:6px 0">South East</td><td style="padding:6px 0;text-align:right">£210</td><td style="padding:6px 0;text-align:right">18 days ago</td>
+    </tr>
+    <tr style="border-bottom:0.5px solid var(--border)">
+      <td style="padding:6px 0">C-00587</td><td style="padding:6px 0">Yorkshire</td><td style="padding:6px 0;text-align:right">£145</td><td style="padding:6px 0;text-align:right">32 days ago</td>
+    </tr>
+    <tr>
+      <td style="padding:6px 0">C-00203</td><td style="padding:6px 0">London</td><td style="padding:6px 0;text-align:right">£380</td><td style="padding:6px 0;text-align:right">9 days ago</td>
+    </tr>
+  </table>
+</div>
+
+<script>
+const gray2 = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim();
+Chart.defaults.font.family = 'var(--font-sans)';
+Chart.defaults.font.size = 12;
+Chart.defaults.color = gray2 || '#5F5E5A';
+
+new Chart(document.getElementById('churnTrend2'), {
+  type: 'line',
+  data: {
+    labels: ['Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun'],
+    datasets: [
+      { label: 'Monthly %', data: [0.61,0.80,0.98,1.14,0.56,0.72,0.35,0.35,0.51,0.67,0.16,0.95], borderColor: '#378ADD', backgroundColor: 'transparent', tension: 0.3, yAxisID: 'y' },
+      { label: 'Annualised %', data: [7.13,9.21,11.13,12.86,6.53,8.34,4.16,4.08,5.93,7.70,1.93,10.82], borderColor: '#D85A30', backgroundColor: 'transparent', tension: 0.3, yAxisID: 'y1' }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: {
+      y: { position: 'left', title: { display: true, text: 'Monthly %' } },
+      y1: { position: 'right', title: { display: true, text: 'Annualised %' }, grid: { drawOnChartArea: false } }
+    },
+    plugins: { legend: { position: 'bottom' } }
+  }
+});
+
+new Chart(document.getElementById('lifecycleDonut2'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Active','Voluntary cancel','DOA','Fraud','Pending','Reactivation'],
+    datasets: [{ data: [622,113,32,22,10,7], backgroundColor: ['#1D9E75','#D85A30','#888780','#E24B4A','#378ADD','#7F77DD'] }]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { boxWidth: 10, font: { size: 11 } } } } }
+});
+
+new Chart(document.getElementById('riskBar2'), {
+  type: 'bar',
+  data: {
+    labels: ['Billing unpaid','Peak usage','Support ticket','Complaint','Tech fault'],
+    datasets: [{ data: [1.69, 0.74, 0.72, 0.69, 0.31], backgroundColor: ['#D85A30','#5DCAA5','#5DCAA5','#5DCAA5','#5DCAA5'] }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: { x: { title: { display: true, text: 'Risk ratio (1.0 = no effect)' } } }
+  }
+});
+</script>

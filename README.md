@@ -1,3 +1,7 @@
+![Snowflake](https://img.shields.io/badge/Snowflake-Data%20Warehouse-blue)
+![dbt](https://img.shields.io/badge/dbt-Analytics%20Engineering-orange)
+![ADF](https://img.shields.io/badge/Azure%20Data%20Factory-ETL-blue)
+
 # Pennine Connect – Analytics Engineering Assessment
 
 ## Project Overview
@@ -52,7 +56,7 @@ Power BI / Executive Reporting
 | Data Warehouse | Snowflake |
 | Data Transformation | dbt |
 | Version Control | Git & GitHub |
-| Reporting | Power BI Desktop |
+| Reporting | Looker Studio |
 | Language | SQL |
 
 ---

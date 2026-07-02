@@ -1,0 +1,12 @@
+sources:
+  - name : pennine_connect
+    database : PENNINE_CONNECT_RAW_DEV
+    schema : SYNTHETIC_DATA
+    tables : 
+      - name : TB_CUSTOMERS
+      - name : TB_BILLINGS
+      - name : TB_PORTAL_EVENTS
+      - name : TB_SUBSCRIPTIONS
+      - name : TB_SUPPORT_CONTACTS
+      - name : TB_USAGE_DAILY
+      

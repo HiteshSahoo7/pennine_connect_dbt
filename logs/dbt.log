@@ -1,0 +1,53 @@
+[0m11:29:05.742840 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b6dd150>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b7563d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b756a50>]}
+
+
+============================== 11:29:05.744879 | f8afab3c-5329-431e-bf46-2068c5cdaaf1 ==============================
+[0m11:29:05.744879 [info ] [MainThread]: Running with dbt=1.11.8
+[0m11:29:05.745124 [debug] [MainThread]: running dbt with arguments {'use_colors': 'True', 'cache_selected_only': 'False', 'quiet': 'False', 'indirect_selection': 'eager', 'empty': 'None', 'log_cache_events': 'False', 'debug': 'False', 'target_path': 'None', 'fail_fast': 'False', 'no_print': 'None', 'version_check': 'True', 'log_format': 'default', 'write_json': 'True', 'invocation_command': 'dbt debug', 'log_path': 'logs', 'use_experimental_parser': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'partial_parse': 'True', 'printer_width': '80', 'static_parser': 'True', 'profiles_dir': '/Users/hitesh/.dbt', 'introspect': 'True', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None'}
+[0m11:29:05.752496 [info ] [MainThread]: dbt version: 1.11.8
+[0m11:29:05.752672 [info ] [MainThread]: python version: 3.11.15
+[0m11:29:05.752844 [info ] [MainThread]: python path: /Users/hitesh/dbt-env/bin/python3.11
+[0m11:29:05.753045 [info ] [MainThread]: os info: macOS-26.5.1-arm64-arm-64bit
+[0m11:29:06.146223 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m11:29:06.146443 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m11:29:06.146551 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m11:29:06.168624 [info ] [MainThread]: Using profiles dir at /Users/hitesh/.dbt
+[0m11:29:06.168792 [info ] [MainThread]: Using profiles.yml file at /Users/hitesh/.dbt/profiles.yml
+[0m11:29:06.168919 [info ] [MainThread]: Using dbt_project.yml file at /Users/hitesh/Documents/git-repo/pennine_connect_dbt/dbt_project.yml
+[0m11:29:06.169055 [error] [MainThread]: Encountered an error:
+Internal Error
+  Profile should not be None if loading profile completed
+[0m11:29:06.171545 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.45625758, "process_in_blocks": "0", "process_kernel_time": 0.154383, "process_mem_max_rss": "180862976", "process_out_blocks": "0", "process_user_time": 0.714996}
+[0m11:29:06.171783 [debug] [MainThread]: Command `dbt debug` failed at 11:29:06.171747 after 0.46 seconds
+[0m11:29:06.171912 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b76f7d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10f804d10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b76ff90>]}
+[0m11:29:06.172050 [debug] [MainThread]: Flushing usage events
+[0m11:29:07.493936 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m11:31:26.561617 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109fd8a90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a052310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a052990>]}
+
+
+============================== 11:31:26.563739 | 635d4e3c-ad5d-4301-9d9e-37e899ea2abc ==============================
+[0m11:31:26.563739 [info ] [MainThread]: Running with dbt=1.11.8
+[0m11:31:26.563977 [debug] [MainThread]: running dbt with arguments {'profiles_dir': '/Users/hitesh/.dbt', 'log_path': 'logs', 'use_experimental_parser': 'False', 'use_colors': 'True', 'warn_error': 'None', 'printer_width': '80', 'log_cache_events': 'False', 'indirect_selection': 'eager', 'partial_parse': 'True', 'target_path': 'None', 'send_anonymous_usage_stats': 'True', 'write_json': 'True', 'static_parser': 'True', 'invocation_command': 'dbt init', 'debug': 'False', 'fail_fast': 'False', 'introspect': 'True', 'version_check': 'True', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_format': 'default', 'cache_selected_only': 'False', 'empty': 'None'}
+[0m11:31:45.559056 [debug] [MainThread]: Starter project path: /Users/hitesh/dbt-env/lib/python3.11/site-packages/dbt/include/starter_project
+[0m11:31:45.568294 [info ] [MainThread]: 
+Your new dbt project "pennine_connect_analytics" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m11:31:45.569205 [info ] [MainThread]: Setting up your profile.
+[0m11:32:05.283635 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 38.747974, "process_in_blocks": "0", "process_kernel_time": 0.106115, "process_mem_max_rss": "115032064", "process_out_blocks": "0", "process_user_time": 0.492434}
+[0m11:32:05.284364 [debug] [MainThread]: Command `dbt init` succeeded at 11:32:05.284268 after 38.75 seconds
+[0m11:32:05.284711 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x100d96910>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x100e3af90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x100e39a90>]}
+[0m11:32:05.284955 [debug] [MainThread]: Flushing usage events
+[0m11:32:06.354914 [debug] [MainThread]: An error was encountered while trying to flush usage events

@@ -1,0 +1,14 @@
+snapshots:
+  - name : tb_customers_snapshot
+    relation: source('pennine_connect','TB_CUSTOMERS')
+    description: snapshot using check strategy type for customers table as no timestamp column was present
+    config:
+      database: PENNINE_CONNECT_CURATED_DEV
+      target_schema: snapshots 
+      #Schema already defined in profile.yml file adding here will concat
+      #Used check strategy instead of Timestamp as no meta date are present 
+      strategy: check
+      unique_key: customer_id
+      #Removed signup_date as it is immutable column, might not get updated unlike others
+      check_cols: ['customer_id','region', 'acquisition_channel','size_band']
+      hard_deletes: invalidate

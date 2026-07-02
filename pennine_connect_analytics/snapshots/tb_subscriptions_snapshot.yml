@@ -1,0 +1,15 @@
+snapshots:
+  - name: tb_subscriptions_snapshot
+    relation: source('pennine_connect', 'TB_SUBSCRIPTIONS')
+    description: >
+      Snapshot using check strategy as no update timestamp column exists
+      on source. Tracks status/mrr/cancelled_date/contract_term_months
+      changes over a subscription's lifecycle.
+    config:
+      database: PENNINE_CONNECT_CURATED_DEV
+      target_schema: snapshots
+      strategy: check
+      unique_key: subscription_id
+      # customer_id, product_type, plan treated as immutable per subscription_id
+      check_cols: ['status', 'mrr', 'cancelled_date', 'go_live_date', 'contract_term_months']
+      hard_deletes: invalidate
